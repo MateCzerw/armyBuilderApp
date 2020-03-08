@@ -1,0 +1,28 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/head"></head>
+
+<body>
+
+<nav th:replace="/fragments/nav :: nav-front"></nav>
+<div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></div>
+<div class="container">
+    <table>
+        <div th:each="army: ${armies}">
+            <tr>
+                <td th:text="*{army.name}"></td>
+                <td><a th:href="@{'/admin/army/edit/' + ${army.id}}"><button type="button" class="btn btn-primary">Edit</button></a></td>
+                <td><a th:href="@{'/admin/army/delete/' + ${army.id}}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                <td><a th:href="@{'/admin/unit/add/' + ${army.id}}"><button type="button" class="btn btn-info">Add Unit</button></a></td>
+            </tr>
+        </div>
+    </table>
+    <a href="/admin/army/add" class="btn btn-primary">Add new army!</a>
+</div>
+<div th:replace="/fragments/footer"></div>
+
+
+</body>
+
+</html>

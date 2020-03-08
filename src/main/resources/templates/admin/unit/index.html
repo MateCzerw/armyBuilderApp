@@ -1,0 +1,60 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/head"></head>
+
+<body>
+
+<nav th:replace="/fragments/nav :: nav-front"></nav>
+<div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></div>
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Unit name</th>
+                <th scope="col">Points</th>
+                <th scope="col">Army</th>
+                <th scope="col">Advance Rate</th>
+                <th scope="col">March Rate</th>
+                <th scope="col">Discipline</th>
+                <th scope="col">Health Points</th>
+                <th scope="col">Defensive Skill</th>
+                <th scope="col">Resilience</th>
+                <th scope="col">Armour</td>
+                <th scope="col">Agility</th>
+                <th scope="col">Attack Value</th>
+                <th scope="col">Offensive Skill</th>
+                <th scope="col">Strength</th>
+                <th scope="col">Armour Penetration</th>
+            </tr>
+        </thead>
+            <tr th:each="unit: ${units}">
+                <td th:text="*{unit.name}"></td>
+                <td th:text="*{unit.points}"></td>
+                <td th:text="*{unit.army.name}"></td>
+                <td th:text="*{unit.unitDetails.getAdvanceRate()}"></td>
+                <td th:text="*{unit.unitDetails.getMarchRate()}"></td>
+                <td th:text="*{unit.unitDetails.getDiscipline()}"></td>
+                <td th:text="*{unit.unitDetails.getHealthPoints()}"></td>
+                <td th:text="*{unit.unitDetails.getDefensiveSkill()}"></td>
+                <td th:text="*{unit.unitDetails.getResilience()}"></td>
+                <td th:text="*{unit.unitDetails.getArmour()}"></td>
+                <td th:text="*{unit.unitDetails.getAgility()}"></td>
+                <td th:text="*{unit.unitDetails.getAttackValue()}"></td>
+                <td th:text="*{unit.unitDetails.getOffensiveSkill()}"></td>
+                <td th:text="*{unit.unitDetails.getStrength()}"></td>
+                <td th:text="*{unit.unitDetails.getArmourPenetration()}"></td>
+                <td><a th:href="@{'/admin/unit/edit/' + ${unit.id}}"><button type="button" class="btn btn-primary">Edit</button></a></td>
+                <td><a th:href="@{'/admin/unit/delete/' + ${unit.id}}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                <td><a th:href="@{'/admin/unit/add/' + ${unit.id} + '/details'}"><button type="button" class="btn btn-info">Edit Unit statistics</button></a></td>
+            </tr>
+
+    </table>
+    <a href="/admin/unit/add" class="btn btn-primary">Add new unit!</a>
+</div>
+<div th:replace="/fragments/footer"></div>
+
+
+</body>
+
+</html>
