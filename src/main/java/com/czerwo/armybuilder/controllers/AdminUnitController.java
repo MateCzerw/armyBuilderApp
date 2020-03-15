@@ -75,7 +75,7 @@ public class AdminUnitController {
         Army armyToSave = armyFromRepo.get();
         Unit unitToSave = unitFromRepo.get();
         unitToSave.setName(unit.getName());
-        unitToSave.setPoints(unit.getPoints());
+        unitToSave.setBaseCost(unit.getBaseCost());
         unitToSave.setArmy(armyToSave);
         unitService.save(unitToSave);
         return "redirect:/admin/unit";
@@ -92,7 +92,21 @@ public class AdminUnitController {
         return "redirect:/admin/unit";
     }
 
+    @GetMapping("/editUnitDetails/{id}")
+    public String editUnitDetails(@PathVariable int id, Model model){
 
+        UnitDetails unitDetails = unitService.getUnitDetails(id).get();
+        model.addAttribute("unitDetails", unitDetails);
+        return "/admin/unit/editUnitDetails";
+    }
+
+    @PostMapping("/editUnitDetails")
+    public String editUnitDetails(UnitDetails unitDetails){
+
+        unitService.saveUnitDetails(unitDetails);
+
+        return "redirect:/admin/unit/";
+    }
 
 
 

@@ -70,7 +70,7 @@ public class UnitDetails {
     }
 
     public void setDiscipline(int discipline) {
-        discipline = discipline;
+        this.discipline = discipline;
     }
 
     public int getHealthPoints() {

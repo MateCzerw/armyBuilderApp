@@ -1,0 +1,32 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/head"></head>
+
+<body>
+
+<nav th:replace="/fragments/nav :: nav-front"></nav>
+
+<div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></div>
+<table>
+    <thead>
+        <th>
+            Unit name:
+        </th>
+    </thead>
+    <tbody th:each="orderedUnit: ${listOfOrderedUnits}">
+        <tr >
+            <td th:text="*{orderedUnit.numberOfModels}"></td>
+            <td th:text="*{orderedUnit.unit.name}"></td>
+        </tr>
+    </tbody>
+
+</table>
+
+
+<div th:replace="/fragments/footer"></div>
+
+
+</body>
+
+</html>

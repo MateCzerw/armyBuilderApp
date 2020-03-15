@@ -1,8 +1,10 @@
 package com.czerwo.armybuilder.services;
 
 import com.czerwo.armybuilder.models.ArmyRepository;
+import com.czerwo.armybuilder.models.UnitDetailsRepository;
 import com.czerwo.armybuilder.models.UnitRepository;
 import com.czerwo.armybuilder.models.data.Unit;
+import com.czerwo.armybuilder.models.data.UnitDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +18,13 @@ public class UnitService {
 
     UnitRepository unitRepository;
     ArmyRepository armyRepository;
+    UnitDetailsRepository unitDetailsRepository;
 
     @Autowired
-    public UnitService(UnitRepository unitRepository, ArmyRepository armyRepository) {
+    public UnitService(UnitRepository unitRepository, ArmyRepository armyRepository, UnitDetailsRepository unitDetailsRepository) {
         this.unitRepository = unitRepository;
         this.armyRepository = armyRepository;
+        this.unitDetailsRepository = unitDetailsRepository;
     }
 
 
@@ -40,5 +44,13 @@ public class UnitService {
 
     public void deleteById(int id) {
         unitRepository.deleteById(id);
+    }
+
+    public  Optional<UnitDetails> getUnitDetails(int id) {
+        return unitDetailsRepository.findById(id);
+    }
+
+    public void saveUnitDetails(UnitDetails unitDetails) {
+        unitDetailsRepository.save(unitDetails);
     }
 }

@@ -46,7 +46,7 @@
                 <td th:text="*{unit.unitDetails.getArmourPenetration()}"></td>
                 <td><a th:href="@{'/admin/unit/edit/' + ${unit.id}}"><button type="button" class="btn btn-primary">Edit</button></a></td>
                 <td><a th:href="@{'/admin/unit/delete/' + ${unit.id}}"><button type="button" class="btn btn-danger">Delete</button></a></td>
-                <td><a th:href="@{'/admin/unit/add/' + ${unit.id} + '/details'}"><button type="button" class="btn btn-info">Edit Unit statistics</button></a></td>
+                <td><a th:href="@{'/admin/unit/editUnitDetails/' + ${unit.unitDetails.id}}"><button type="button" class="btn btn-info">Edit unit statistics</button></a></td>
             </tr>
 
     </table>
