@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @Entity
-public class User implements UserDetails {
+public class Admin implements UserDetails {
 
     private static final long serialVersionUID = 1l;
 
@@ -28,7 +28,7 @@ public class User implements UserDetails {
 
     private String phoneNumber;
 
-    public User() {
+    public Admin() {
     }
 
     public int getId() {
@@ -63,17 +63,9 @@ public class User implements UserDetails {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
-
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+        return Arrays.asList(new SimpleGrantedAuthority("ROLE_ADMIN"));
     }
 
     @Override

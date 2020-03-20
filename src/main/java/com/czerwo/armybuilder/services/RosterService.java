@@ -50,4 +50,12 @@ public class RosterService {
     public Optional<Unit> findUnitById(int unitId) {
         return unitRepository.findById(unitId);
     }
+
+    public Optional<OrderedUnit> getOrderedUnit(int orderedUnitId) {
+        return orderedUnitRepository.findById(orderedUnitId);
+    }
+
+    public void save(OrderedUnit orderedUnit) {
+        orderedUnitRepository.save(orderedUnit);
+    }
 }

@@ -45,4 +45,12 @@ public class OrderedUnit {
     public void setUnit(Unit unit) {
         this.unit = unit;
     }
+
+    public Roster getRoster() {
+        return roster;
+    }
+
+    public void setRoster(Roster roster) {
+        this.roster = roster;
+    }
 }

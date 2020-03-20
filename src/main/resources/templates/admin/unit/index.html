@@ -30,7 +30,7 @@
         </thead>
             <tr th:each="unit: ${units}">
                 <td th:text="*{unit.name}"></td>
-                <td th:text="*{unit.points}"></td>
+                <td th:text="*{unit.baseCost}"></td>
                 <td th:text="*{unit.army.name}"></td>
                 <td th:text="*{unit.unitDetails.getAdvanceRate()}"></td>
                 <td th:text="*{unit.unitDetails.getMarchRate()}"></td>

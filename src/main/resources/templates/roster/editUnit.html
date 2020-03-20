@@ -1,0 +1,26 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/head"></head>
+
+<body>
+
+<nav th:replace="/fragments/nav :: nav-front"></nav>
+
+<div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></div>
+<form method="post" th:object="${orderedUnit}" th:action="@{'/roster/edit/' + ${rosterId} + '/editUnit/' + ${orderedUnitId}}">
+    <div th:text="'Unit name:' + ${orderedUnit.unit.name}"></div>
+    <input type="text" th:field="*{numberOfModels}">
+    <input type="text" hidden th:field="*{id}" th:value="${orderedUnit.id}">
+    <input type="text" hidden th:field="*{unit}" th:value="${orderedUnit.unit}">
+    <input type="text" hidden th:field="*{roster}" th:value="${orderedUnit.roster}">
+    <button class="btn btn-danger mb-5">Add</button>
+</form>
+<a th:href="@{'/roster/edit/' + ${orderedUnit.roster.id}}" class="btn btn-info mb-5" >Return</a>
+
+<div th:replace="/fragments/footer"></div>
+
+
+</body>
+
+</html>

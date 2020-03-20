@@ -65,7 +65,7 @@ public class RosterController {
         Roster roster = rosterService.findById(id).get();
         List<OrderedUnit> listOfOrderedUnits = rosterService.getListOfOrderedUnits(roster);
         model.addAttribute("listOfOrderedUnits", listOfOrderedUnits);
-
+        model.addAttribute("rosterId", id);
 
         return "roster/edit";
     }
@@ -89,6 +89,24 @@ public class RosterController {
         orderedUnit.setUnit(rosterService.findUnitById(unitId).get());
         roster.addUnit(orderedUnit);
         rosterService.save(roster);
+
+        return "redirect:/roster/edit/{rosterId}";
+    }
+
+    @GetMapping("/edit/{rosterId}/editUnit/{orderedUnitId}")
+    public String editOrderedUnit(Model model, @PathVariable int rosterId, @PathVariable int orderedUnitId){
+        OrderedUnit orderedUnit = rosterService.getOrderedUnit(orderedUnitId).get();
+        model.addAttribute("orderedUnit", orderedUnit);
+        model.addAttribute("rosterId", rosterId);
+        return "roster/editUnit";
+    }
+
+
+    @PostMapping("/edit/{rosterId}/editUnit/{orderedUnitId}")
+    public String editOrderedUnit(@PathVariable int rosterId, OrderedUnit orderedUnit, @PathVariable int orderedUnitId){
+
+
+        rosterService.save(orderedUnit);
 
         return "redirect:/roster/edit/{rosterId}";
     }

@@ -10,20 +10,20 @@
 <div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></div>
 <table>
     <thead>
-        <th>
-            Unit name:
-        </th>
+        <th>Quantity</th>
+        <th>Unit name</th>
     </thead>
-    <tbody th:each="orderedUnit: ${listOfOrderedUnits}">
-        <tr >
+    <tbody>
+        <tr th:each="orderedUnit: ${listOfOrderedUnits}">
             <td th:text="*{orderedUnit.numberOfModels}"></td>
             <td th:text="*{orderedUnit.unit.name}"></td>
+            <td><a th:href="@{'/roster/edit/' + ${rosterId} + '/editUnit/' + ${orderedUnit.id}}"><button type="button" class="btn btn-info">Edit Unit</button></a></td>
         </tr>
+
     </tbody>
-
 </table>
-
-
+<a th:href="@{'/roster/edit/' + ${rosterId} + '/addUnit/'}"><button type="button" class="btn btn-info">Add Unit</button></a>
+<a th:href="@{'/roster/'}"><button type="button" class="btn btn-info">Return</button></a>
 <div th:replace="/fragments/footer"></div>
 
 
