@@ -1,3 +1,7 @@
+insert into APPLICATION_USER(APPLICATION_USE_ROLE,IS_ACCOUNT_NON_EXPIRED,IS_ACCOUNT_NON_LOCKED,IS_CREDENTIALS_NON_EXPIRED,IS_ENABLED,PASSWORD,USERNAME)
+values ('USER',true,true,true,true,'password','chuj');
+
+
 insert into army(name) values
 ('Beast Herds'),
 ('Daemon Legions' ),
@@ -98,3 +102,6 @@ insert into ordered_unit(NUMBER_OF_MODELS,ROSTER_ID,UNIT_ID) values
 (20,3,7),
 (20,3,8),
 (20,3,9);
+
+
+
