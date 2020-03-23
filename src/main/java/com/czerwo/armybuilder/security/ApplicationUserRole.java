@@ -13,7 +13,7 @@ import static com.czerwo.armybuilder.security.ApplicationUserPermission.*;
 
 public enum ApplicationUserRole {
     USER(Sets.newHashSet(USER_ROSTER)),
-    ADMIN(Sets.newHashSet(USER_ROSTER, ADMIN_PANEL));
+    ADMIN(Sets.newHashSet(ADMIN_PANEL));
 
     private final Set<ApplicationUserPermission> permissions;
 
