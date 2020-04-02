@@ -1,5 +1,6 @@
 package com.czerwo.armybuilder.controllers;
 
+import com.czerwo.armybuilder.auth.ApplicationUserService;
 import com.czerwo.armybuilder.models.data.Army;
 import com.czerwo.armybuilder.models.data.OrderedUnit;
 import com.czerwo.armybuilder.models.data.Roster;
@@ -10,8 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/roster")
@@ -19,15 +20,17 @@ public class RosterController {
 
     RosterService rosterService;
     ArmyService armyService;
+    ApplicationUserService applicationUserService;
 
-    public RosterController(RosterService rosterService, ArmyService armyService) {
+    public RosterController(RosterService rosterService, ArmyService armyService, ApplicationUserService applicationUserService) {
         this.rosterService = rosterService;
         this.armyService = armyService;
+        this.applicationUserService = applicationUserService;
     }
 
     @GetMapping
-    public String index(Model model) {
-        List<Roster> rosters = rosterService.findAll();
+    public String index(Model model, Principal principal) {
+        List<Roster> rosters = rosterService.findByUsername(principal.getName());
         model.addAttribute("rosters", rosters);
 
         return "roster/index";
@@ -42,10 +45,11 @@ public class RosterController {
     }
 
     @PostMapping("/add")
-    public String add(Roster roster, @RequestParam int armyId) {
+    public String add(Roster roster, @RequestParam int armyId, Principal principal) {
 
         Army army = armyService.findById(armyId).get();
         roster.setArmy(army);
+        roster.setApplicationUser(applicationUserService.getUser(principal.getName()).get());
         rosterService.save(roster);
 
         return "redirect:/roster/add";
@@ -53,6 +57,7 @@ public class RosterController {
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable int id) {
+
 
         rosterService.deleteById(id);
 

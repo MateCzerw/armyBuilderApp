@@ -1,5 +1,6 @@
 package com.czerwo.armybuilder.auth;
 
+import com.czerwo.armybuilder.models.data.Roster;
 import com.czerwo.armybuilder.security.ApplicationUserPermission;
 import com.czerwo.armybuilder.security.ApplicationUserRole;
 import org.springframework.security.core.GrantedAuthority;
@@ -7,6 +8,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -22,6 +24,9 @@ public class ApplicationUser implements UserDetails {
     @Enumerated(EnumType.STRING)
     private ApplicationUserRole applicationUseRole;
 
+    @OneToMany(mappedBy = "applicationUser")
+    private List<Roster> rosters = new ArrayList<>();
+
     private String password;
     private String username;
     private boolean isAccountNonExpired;
@@ -30,6 +35,15 @@ public class ApplicationUser implements UserDetails {
     private boolean isEnabled;
 
     public ApplicationUser() {
+    }
+
+
+    public List<Roster> getRosters() {
+        return rosters;
+    }
+
+    public void addRoster(Roster roster) {
+        rosters.add(roster);
     }
 
     @Override

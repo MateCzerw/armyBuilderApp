@@ -1,6 +1,11 @@
 package com.czerwo.armybuilder.models.data;
 
+import com.czerwo.armybuilder.models.data.options.GroupOfOptions;
+
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,14 +15,23 @@ public class Unit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Size(min=5, message = "Army name must be at least 5 characters long")
     private String name;
 
+    @Max(1000)
+    @Min(3)
     private int baseCost;
 
+    @Max(1000)
+    @Min(3)
     private int additionalModelsCost;
 
+    @Max(100)
+    @Min(1)
     private int minSizeOfUnit;
 
+    @Max(100)
+    @Min(1)
     private int maxSizeOfUnit;
 
     @ManyToOne
@@ -29,6 +43,9 @@ public class Unit {
     @OneToMany
     @JoinColumn(name = "unit_id")
     List<OrderedUnit> orderedUnits = new ArrayList<>();
+
+    @ManyToMany
+    List<GroupOfOptions> groupOfOptions = new ArrayList<>();
 
     public Unit() {
     }

@@ -1,14 +1,21 @@
 package com.czerwo.armybuilder.models.data;
 
+
+import com.czerwo.armybuilder.models.data.Validation.NumberOfModels.NumberOfModelsMatch;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 
 @Entity
+@NumberOfModelsMatch
 public class OrderedUnit {
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     private int id;
 
+    @NotNull
     private int numberOfModels;
 
     @ManyToOne

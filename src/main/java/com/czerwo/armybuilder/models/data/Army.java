@@ -14,6 +14,7 @@ public class Army {
     @Size(min=5, message = "Army name must be at least 5 characters long")
     private String name;
 
+
     @OneToMany(mappedBy = "army")
     private List<Unit> units = new ArrayList<>();
 

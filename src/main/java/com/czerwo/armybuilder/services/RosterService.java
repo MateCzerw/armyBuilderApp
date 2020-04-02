@@ -24,11 +24,8 @@ public class RosterService {
         this.unitRepository = unitRepository;
     }
 
-    public List<Roster> findAll() {
+    public List<Roster> findAll() {return rosterRepository.findAll(); }
 
-        return rosterRepository.findAll();
-
-    }
 
     public void save(Roster roster) {
         rosterRepository.save(roster);
@@ -40,7 +37,10 @@ public class RosterService {
 
     public List<OrderedUnit> getListOfOrderedUnits(Roster roster) {
         return orderedUnitRepository.findAllByRoster(roster);
+    }
 
+    public List<Roster> findByUsername(String username){
+        return rosterRepository.findByApplicationUserUsername(username);
     }
 
     public Optional<Roster> findById(int id) {

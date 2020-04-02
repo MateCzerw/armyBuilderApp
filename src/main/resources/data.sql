@@ -1,5 +1,6 @@
 insert into APPLICATION_USER(APPLICATION_USE_ROLE,IS_ACCOUNT_NON_EXPIRED,IS_ACCOUNT_NON_LOCKED,IS_CREDENTIALS_NON_EXPIRED,IS_ENABLED,PASSWORD,USERNAME) values
-('USER',true,true,true,true,'$2a$10$Br0/W3sngs5hdRgkGpwzt.ZyOPIHXacdbNH6TM7Ga28CF7W5MD7RC','user'),
+('USER',true,true,true,true,'$2a$10$Br0/W3sngs5hdRgkGpwzt.ZyOPIHXacdbNH6TM7Ga28CF7W5MD7RC','user1'),
+('USER',true,true,true,true,'$2a$10$Br0/W3sngs5hdRgkGpwzt.ZyOPIHXacdbNH6TM7Ga28CF7W5MD7RC','user2'),
 ('ADMIN',true,true,true,true,'$2a$10$Br0/W3sngs5hdRgkGpwzt.ZyOPIHXacdbNH6TM7Ga28CF7W5MD7RC','admin');
 
 insert into army(name) values
@@ -81,10 +82,10 @@ insert into unit(name,BASE_COST,army_id,unit_details_id,ADDITIONAL_MODELS_COST, 
 ('Shrieking Horror',50,13,27,10,50,1);
 
 
-insert into roster(name,army_id) values
-('Vampirki',13),
-('Vampiry',13),
-('Vamps',13);
+insert into roster(name,army_id,APPLICATION_USER_ID) values
+('Vampirki',13,1),
+('Vampiry',13,1),
+('Vamps',13,2);
 
 insert into ordered_unit(NUMBER_OF_MODELS,ROSTER_ID,UNIT_ID) values
 (1,1,1),
