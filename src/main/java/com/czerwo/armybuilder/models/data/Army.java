@@ -1,6 +1,8 @@
 package com.czerwo.armybuilder.models.data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,12 +13,24 @@ public class Army {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Size(min=5, message = "Army name must be at least 5 characters long")
+    @NotNull
+    @NotBlank
+    @Size(min=3, message = "Army name must be at least 3 characters long")
     private String name;
 
 
     @OneToMany(mappedBy = "army")
     private List<Unit> units = new ArrayList<>();
+
+//    private String picture;
+//
+//    public String getPicture() {
+//        return picture;
+//    }
+//
+//    public void setPicture(String picture) {
+//        this.picture = picture;
+//    }
 
     public List<Unit> getUnits() {
         return units;

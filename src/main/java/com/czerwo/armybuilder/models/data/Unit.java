@@ -37,15 +37,15 @@ public class Unit {
     @ManyToOne
     Army army;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     UnitDetails unitDetails;
 
     @OneToMany
     @JoinColumn(name = "unit_id")
     List<OrderedUnit> orderedUnits = new ArrayList<>();
 
-    @ManyToMany
-    List<GroupOfOptions> groupOfOptions = new ArrayList<>();
+    @ManyToMany(mappedBy = "units", cascade = CascadeType.ALL)
+    List<GroupOfOptions> groupsOfOptions = new ArrayList<>();
 
     public Unit() {
     }
@@ -120,5 +120,21 @@ public class Unit {
 
     public void setMaxSizeOfUnit(int maxSizeOfUnit) {
         this.maxSizeOfUnit = maxSizeOfUnit;
+    }
+
+    public List<GroupOfOptions> getGroupsOfOptions() {
+        return groupsOfOptions;
+    }
+
+    public void setGroupsOfOptions(List<GroupOfOptions> groupsOfOptions) {
+        this.groupsOfOptions = groupsOfOptions;
+    }
+
+    public void addGroupOfOptions(GroupOfOptions groupOfOptions) {
+        groupsOfOptions.add(groupOfOptions);
+    }
+
+    public void removeGroup(GroupOfOptions groupOfOptions) {
+        groupsOfOptions.remove(groupOfOptions);
     }
 }

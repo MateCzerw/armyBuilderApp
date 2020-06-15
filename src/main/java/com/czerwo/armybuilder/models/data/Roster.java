@@ -18,7 +18,6 @@ public class Roster {
     private String name;
 
     @ManyToOne
-    @NotNull
     private Army army;
 
     @OneToMany(cascade = CascadeType.ALL)
@@ -73,5 +72,15 @@ public class Roster {
 
     public void setApplicationUser(ApplicationUser applicationUser) {
         this.applicationUser = applicationUser;
+    }
+
+    public void removeOrderedUnits() {
+
+    orderedUnits.clear();
+
+    }
+
+    public void removeOrderedUnit(OrderedUnit orderedUnit) {
+        orderedUnits.remove(orderedUnit);
     }
 }

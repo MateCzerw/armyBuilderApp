@@ -19,8 +19,10 @@ public class NumberOfModelsValidator implements ConstraintValidator<NumberOfMode
 
     @Override
     public boolean isValid(OrderedUnit orderedUnit, ConstraintValidatorContext constraintValidatorContext) {
-        int maxNumberOfModelsInUnit = orderedUnit.getUnit().getMaxSizeOfUnit();
-        int minNumberOfModelsInUnit = orderedUnit.getUnit().getMinSizeOfUnit();
+            int maxNumberOfModelsInUnit = orderedUnit.getUnit().getMaxSizeOfUnit();
+            int minNumberOfModelsInUnit = orderedUnit.getUnit().getMinSizeOfUnit();
+//        int maxNumberOfModelsInUnit = 1;
+//        int minNumberOfModelsInUnit = 40;
 
         if(orderedUnit.getNumberOfModels() >= minNumberOfModelsInUnit && orderedUnit.getNumberOfModels() <= maxNumberOfModelsInUnit) return true;
 

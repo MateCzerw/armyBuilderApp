@@ -1,0 +1,45 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/head"></head>
+
+<body>
+
+<nav th:replace="/fragments/nav :: nav-front"></nav>
+<div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></div>
+<div class="container">
+
+
+    <table class="table" th:each="roster: ${rosters}">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col text-center" th:text="*{'roster name: ' + roster.name}"></th>
+                <th scope="col text-center" th:if="*{roster.army != null}" th:text="*{'army name: ' + roster.army.name}"></th>
+                <th scope="col">
+                        <span class="col"><a th:href="@{'/rosters/edit/' + ${roster.id}}"> <button type="button" class="btn btn-primary">Edit</button></a></span>
+                        <span class="col"><a th:href="@{'/rosters/delete/' + ${roster.id}}"><button type="button" class="btn btn-danger">Delete</button></a></span>
+                        <span class="col"><a th:href="@{'/rosters/' + ${roster.id} + '/add-unit'}"><button type="button" class="btn btn-info">Add Unit!</button></a></span>
+
+                </th>
+            </tr>
+        </thead>
+            <tbody>
+                <tr th:each="unit: ${roster.orderedUnits}">
+                    <td class="text-center" th:text="*{unit.unit.name}"></td>
+                    <td>
+                        <div class="row">
+                            <span class="col"><a th:href="@{'/rosters/' + ${roster.id} + '/edit-unit/' + ${unit.id}}"><button type="button" class="btn btn-primary col">Edit Unit</button></a></span>
+                            <span class="col"><a th:href="@{'/rosters/' + ${roster.id} + '/delete-unit/' + ${unit.id}}"><button type="button" class="btn btn-danger col">Delete from Roster</button></a></span>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+    </table>
+    <a th:href="@{/rosters/add}" class="btn btn-warning col">Add new roster!</a>
+</div>
+<div th:replace="/fragments/footer"></div>
+
+
+</body>
+
+</html>

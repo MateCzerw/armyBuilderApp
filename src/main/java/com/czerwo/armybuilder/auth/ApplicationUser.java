@@ -1,6 +1,7 @@
 package com.czerwo.armybuilder.auth;
 
 import com.czerwo.armybuilder.models.data.Roster;
+import com.czerwo.armybuilder.models.data.Tournament;
 import com.czerwo.armybuilder.security.ApplicationUserPermission;
 import com.czerwo.armybuilder.security.ApplicationUserRole;
 import org.springframework.security.core.GrantedAuthority;
@@ -26,6 +27,13 @@ public class ApplicationUser implements UserDetails {
 
     @OneToMany(mappedBy = "applicationUser")
     private List<Roster> rosters = new ArrayList<>();
+
+    @OneToMany(mappedBy = "host")
+    private List<Tournament> tournamentsWithHostRole = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "participants")
+    private List<Tournament> tournaments = new ArrayList<>();
+
 
     private String password;
     private String username;
@@ -120,5 +128,13 @@ public class ApplicationUser implements UserDetails {
 
     public void setApplicationUseRole(ApplicationUserRole applicationUseRole) {
         this.applicationUseRole = applicationUseRole;
+    }
+
+    public void addTournament(Tournament tournament) {
+        tournaments.add(tournament);
+    }
+
+    public void removeTournament(Tournament tournament) {
+        tournaments.remove(tournament);
     }
 }

@@ -1,0 +1,112 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/head"></head>
+
+<body>
+
+<nav th:replace="/fragments/nav :: nav-front"></nav>
+<div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></div>
+<div class="container">
+
+    <div class="row justify-content-center tournaments-bar my-6 mx-0">Tournaments</div>
+
+    <table class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Date</th>
+            <th scope="col">Owner</th>
+            <th scope="col">Functions</th>
+        </thead>
+        <tbody>
+        <tr th:each="tournament: ${tournaments}">
+            <td th:text="${tournament.name}"></td>
+            <td th:text="${#dates.format(tournament.time, 'dd-MM-yyyy HH:mm')}"></td>
+            <td th:text="${tournament.host.username}"></td>
+
+            <td class="justify-content-center">
+                <a th:href="@{'/tournaments/' + ${tournament.id} + '/signup'}" class="col">
+                    <button type="button" class="btn btn-primary col">Sign up!</button>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!--    <a th:href="@{/rosters/add}" class="btn btn-primary">Add new roster!</a>-->
+</div>
+<div class="container">
+
+    <div class="row justify-content-center tournaments-bar my-6 mx-0">Own Tournaments</div>
+
+    <table class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Date</th>
+            <th scope="col">Owner</th>
+            <th scope="col">Functions</th>
+        </thead>
+        <tbody>
+        <tr th:each="ownTournament: ${ownTournaments}">
+            <td th:text="${ownTournament.name}"></td>
+            <td th:text="${#dates.format(ownTournament.time, 'dd-MM-yyyy HH:mm')}"></td>
+            <td th:text="${ownTournament.host.username}"></td>
+
+            <td>
+                <div class="col">
+                    <a th:href="@{'/tournaments/' + ${ownTournament.id} + '/manage'}" class="col-6">
+                        <button type="button" class="btn btn-primary col">Manage</button>
+                    </a>
+                    <a th:href="@{'/tournaments/' + ${ownTournament.id} + '/delete'}" class="col-6">
+                        <button type="button" class="btn btn-danger col">Delete</button>
+                    </a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+<div class="container">
+
+    <div class="row justify-content-center tournaments-bar my-6 mx-0">Signed up to</div>
+
+    <table class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Date</th>
+            <th scope="col">Owner</th>
+            <th scope="col">Functions</th>
+        </thead>
+        <tbody>
+        <tr th:each="signedUpTournaments: ${signedUpTournaments}">
+            <td th:text="${signedUpTournaments.name}"></td>
+            <td th:text="${#dates.format(signedUpTournaments.time, 'dd-MM-yyyy HH:mm')}"></td>
+            <td th:text="${signedUpTournaments.host.username}"></td>
+
+            <td>
+                <a th:href="@{'/tournaments/' + ${signedUpTournaments.id} + '/unsubscribe'}" class="col">
+                    <button type="button" class="btn btn-danger col">Unsubscribe</button>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+<div class="container">
+    <div class="row">
+        <a th:href="@{/tournaments/add}" class="col">
+            <button type="button" class="btn btn-warning col">Add new tournament!</button>
+        </a>
+    </div>
+</div>
+<div th:replace="/fragments/footer"></div>
+
+
+</body>
+
+</html>

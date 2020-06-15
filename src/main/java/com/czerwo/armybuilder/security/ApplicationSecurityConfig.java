@@ -4,6 +4,7 @@ import com.czerwo.armybuilder.auth.ApplicationUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -34,6 +35,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                //.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/admin/**").hasAnyAuthority(ADMIN_PANEL.getPermission())
@@ -41,7 +43,13 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated()
                 .and()
-                .formLogin();
+                .formLogin()
+                    .loginPage("/login")
+                    .defaultSuccessUrl("/", true)
+                    .permitAll()
+                .and()
+                    .logout()
+                        .logoutSuccessUrl("/");
 
     }
 

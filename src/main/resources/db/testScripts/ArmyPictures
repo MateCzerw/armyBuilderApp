@@ -1,0 +1,17 @@
+insert into army(name) values
+('Beast Herds','https://res.cloudinary.com/dxf3p6flq/image/upload/v1586378917/470_dt67wz.png'),
+('Daemon Legions' ,'https://res.cloudinary.com/dxf3p6flq/image/upload/v1586378917/780_k2p2ue.png'),
+('Dread Elves','https://res.cloudinary.com/dxf3p6flq/image/upload/v1586378916/458_apysbp.png'),
+('Dwarven Holds','https://res.cloudinary.com/dxf3p6flq/image/upload/v1586378916/464_qcnijp.png' ),
+('Empire of Sonnstahl','https://res.cloudinary.com/dxf3p6flq/image/upload/v1586378916/463_xipttl.png' ),
+('Highborn Elves','https://res.cloudinary.com/dxf3p6flq/image/upload/v1586378916/462_lao06y.png' ),
+('Infernal Dwarves','https://res.cloudinary.com/dxf3p6flq/image/upload/v1586378917/483_eo166p.png' ),
+('Kingdom Of Equitaine','https://res.cloudinary.com/dxf3p6flq/image/upload/v1586378916/460_qcldct.png' ),
+('Ogre Khans','https://res.cloudinary.com/dxf3p6flq/image/upload/v1586378917/468_u4sett.png' ),
+('Orcs and Goblins','https://res.cloudinary.com/dxf3p6flq/image/upload/v1586378917/469_vjijwx.png' ),
+('Saurian Ancients' ,'https://res.cloudinary.com/dxf3p6flq/image/upload/v1586378917/497_kw9iq4.png'),
+('Sylvan Elves','https://res.cloudinary.com/dxf3p6flq/image/upload/v1586378917/482_cxrrf8.png' ),
+('Vampire Covenant', 'https://res.cloudinary.com/dxf3p6flq/image/upload/v1586378917/490_driqtr.png'),
+('The Vermin Swarm','https://res.cloudinary.com/dxf3p6flq/image/upload/v1586378917/479_trueiw.png' ),
+('Warriors Of The Dark Gods','https://res.cloudinary.com/dxf3p6flq/image/upload/v1586378917/485_tk8iaw.png' ),
+('Undying Dynasties','https://res.cloudinary.com/dxf3p6flq/image/upload/v1586378916/467_vsrjb3.png' );

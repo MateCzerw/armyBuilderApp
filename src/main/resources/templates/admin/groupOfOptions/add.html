@@ -1,0 +1,31 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/head"></head>
+
+<body>
+
+<nav th:replace="/fragments/nav :: nav-admin"></nav>
+<div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></div>
+    <div class="container">
+        <form method="post" th:object="${groupOfOptions}" th:action="@{/admin/group-of-options/add}">
+
+
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input id="name" type="text" th:field="*{name}" class="form-control"/>
+                <span class="error"  th:errors="*{name}"></span>
+            </div>
+
+            <button class="btn btn-danger mb-5">Add</button>
+            <a th:href="@{/admin/group-of-options}" class="btn btn-info mb-5" >Return</a>
+        </form>
+    </div>
+
+<div th:replace="/fragments/footer"></div>
+
+
+
+</body>
+
+</html>

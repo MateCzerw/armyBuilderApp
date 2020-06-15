@@ -1,0 +1,38 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/head"></head>
+
+<body>
+
+<nav th:replace="/fragments/nav :: nav-admin"></nav>
+<div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></div>
+<div class="container">
+    <table class="table text-center table-striped table-hover">
+        <thead>
+        <tr class="row">
+            <th class="col-1">#</th>
+            <th class="col-6">Options group name</th>
+            <th class="col-5">Functions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="row" th:each="group: ${listOfGroups}">
+            <th class="col-1" scope="row" th:text="*{group.id}" ></th>
+            <td class="col-6" th:text="*{group.name}" ></td>
+            <td class="row col-5">
+                <span class="col"><a th:href="@{'/admin/group-of-options/delete/' + ${group.id}}"><button type="button" class="btn btn-danger col">Delete</button></a></span>
+                <span class="col"><a th:href="@{'/admin/group-of-options/edit/' + ${group.id}}"><button type="button" class="btn btn-primary col">Edit</button></a></span>
+                <span class="col"><a th:href="@{'/admin/group-of-options/' + ${group.id} + '/options'}"><button type="button" class="btn btn-info col">Edit Options</button></a></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/admin/group-of-options/add" class="btn btn-secondary btn-block">Add new group!</a>
+</div>
+<div th:replace="/fragments/footer"></div>
+
+
+</body>
+
+</html>

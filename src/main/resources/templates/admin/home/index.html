@@ -1,0 +1,18 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/head"></head>
+
+<body>
+
+<nav th:replace="/fragments/nav :: nav-admin"></nav>
+<div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></div>
+<div class="container">
+
+</div>
+<div th:replace="/fragments/footer"></div>
+
+
+</body>
+
+</html>

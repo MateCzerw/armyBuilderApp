@@ -1,0 +1,47 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/head"></head>
+
+<body>
+
+<nav th:replace="/fragments/nav :: nav-front"></nav>
+<div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></div>
+<div class="container">
+
+    <div class="row justify-content-center tournaments-bar my-6 mx-0" th:text="${tournament.name}"></div>
+
+    <table class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Functions</th>
+        </thead>
+        <tbody>
+        <tr th:each="participant: ${participants}">
+            <td th:text="${participant.username}"></td>
+
+            <td class="justify-content-center">
+                <a th:href="@{'/tournaments/' + ${tournament.id} + '/remove/' + ${participant.id}}" class="col">
+                    <button type="button" class="btn btn-danger col">Remove!</button>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!--    <a th:href="@{/rosters/add}" class="btn btn-primary">Add new roster!</a>-->
+</div>
+<div class="container">
+    <div class="row">
+        <a th:href="@{/tournaments}" class="col">
+            <button type="button" class="btn btn-primary col">Return!</button>
+        </a>
+    </div>
+</div>
+<div th:replace="/fragments/footer"></div>
+
+
+</body>
+
+</html>

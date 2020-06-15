@@ -1,0 +1,45 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/head"></head>
+
+<body>
+
+<nav th:replace="/fragments/nav :: nav-front"></nav>
+
+<div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></div>
+<div class="container justify-content-center">
+    <form method="post" th:object="${roster}" th:action="@{'/rosters/edit/' + ${roster.id}}">
+
+        <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+            There are errors
+        </div>
+
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input id="name" type="text" th:field="*{name}" class="form-control">
+            <span th:errors="*{name}"></span>
+        </div>
+        <div class="form-group">
+            <label for="armyId" > Choose a army:</label>
+            <select id="armyId" th:name="armyId" class="form-control">
+                <option th:value="${army.id}" th:text="${army.name}" th:each="army: ${armies}" th:selected="${army.id==roster.army.id}"></option>
+            </select>
+        </div>
+        <input type="hidden" th:field="*{id}" >
+        <div class="row">
+            <button class="col-sm-5 btn btn-danger mx-auto">Save</button>
+            <a th:href="@{/rosters}" class="btn col-sm-5 btn-info mx-auto">Return</a>
+
+        </div>
+    </form>
+
+</div>
+
+
+<div th:replace="/fragments/footer"></div>
+
+
+</body>
+
+</html>

@@ -2,13 +2,16 @@ package com.czerwo.armybuilder.models.data;
 
 
 import com.czerwo.armybuilder.models.data.Validation.NumberOfModels.NumberOfModelsMatch;
+import com.czerwo.armybuilder.models.data.options.Option;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
-@NumberOfModelsMatch
+//@NumberOfModelsMatch
 public class OrderedUnit {
 
     @Id
@@ -24,7 +27,8 @@ public class OrderedUnit {
     @ManyToOne
     private Roster roster;
 
-
+    @ManyToMany
+    private List<Option> choosenOptions = new ArrayList<>();
 
     public OrderedUnit() {
     }
@@ -59,5 +63,21 @@ public class OrderedUnit {
 
     public void setRoster(Roster roster) {
         this.roster = roster;
+    }
+
+    public List<Option> getChoosenOptions() {
+        return choosenOptions;
+    }
+
+    public void setChoosenOptions(List<Option> choosenOptions) {
+        this.choosenOptions = choosenOptions;
+    }
+
+    public void removeAllOptions() {
+        choosenOptions.clear();
+    }
+
+    public void addChosenOption(Option option) {
+        choosenOptions.add(option);
     }
 }
