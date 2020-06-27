@@ -5,10 +5,10 @@
 
 <body>
 
-<nav th:replace="/fragments/nav :: nav-front"></nav>
+<nav th:replace="/fragments/nav :: nav-admin"></nav>
 
 <div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></div>
-<div>
+<div class="container">
 
     <form method="post" th:object="${unitDetails}" th:action="@{'/admin/units/edit-details/' + ${unit.id}}">
 
@@ -19,51 +19,51 @@
 
         <div class="form-group">
             <label for="advanceRate">Advance Rate:</label>
-            <input id="advanceRate" type="text" th:field="*{advanceRate}">
+            <input id="advanceRate" type="text" th:field="*{advanceRate}" class="form-control">
         </div>
         <div class="form-group">
             <label for="marchRate">March Rate:</label>
-            <input id="marchRate" type="text" th:field="*{marchRate}">
+            <input id="marchRate" type="text" th:field="*{marchRate}" class="form-control">
         </div>
         <div class="form-group">
             <label for="discipline">Discipline:</label>
-            <input id="discipline" type="text" th:field="*{discipline}">
+            <input id="discipline" type="text" th:field="*{discipline}" class="form-control">
         </div>
         <div class="form-group">
             <label for="healthPoints">Health Points:</label>
-            <input id="healthPoints" type="text" th:field="*{healthPoints}">
+            <input id="healthPoints" type="text" th:field="*{healthPoints}" class="form-control">
         </div>
         <div class="form-group">
             <label for="defensiveSkill">Defensive Skill:</label>
-            <input id="defensiveSkill" type="text" th:field="*{defensiveSkill}">
+            <input id="defensiveSkill" type="text" th:field="*{defensiveSkill}" class="form-control">
         </div>
         <div class="form-group">
             <label for="armour">Armour:</label>
-            <input id="armour" type="text" th:field="*{armour}">
+            <input id="armour" type="text" th:field="*{armour}" class="form-control">
         </div>
         <div class="form-group">
             <label for="agility">Agility:</label>
-            <input id="agility" type="text" th:field="*{agility}">
+            <input id="agility" type="text" th:field="*{agility}" class="form-control">
         </div>
         <div class="form-group">
             <label for="attackValue">Attack Value:</label>
-            <input id="attackValue" type="text" th:field="*{attackValue}">
+            <input id="attackValue" type="text" th:field="*{attackValue}" class="form-control">
         </div>
         <div class="form-group">
             <label for="offensiveSkill">Offensive Skill:</label>
-            <input id="offensiveSkill" type="text" th:field="*{offensiveSkill}">
+            <input id="offensiveSkill" type="text" th:field="*{offensiveSkill}" class="form-control">
         </div>
         <div class="form-group">
             <label for="strength">Strength:</label>
-            <input id="strength" type="text" th:field="*{strength}">
+            <input id="strength" type="text" th:field="*{strength}" class="form-control">
         </div>
         <div class="form-group">
             <label for="armourPenetration">Armour Penetration:</label>
-            <input id="armourPenetration" type="text" th:field="*{armourPenetration}">
+            <input id="armourPenetration" type="text" th:field="*{armourPenetration}" class="form-control">
         </div>
         <div class="form-group">
             <label for="resilience">Resilience</label>
-            <input id="resilience" type="text" th:field="*{resilience}">
+            <input id="resilience" type="text" th:field="*{resilience}" class="form-control">
         </div>
 
         <input type="hidden" th:field="*{id}" >

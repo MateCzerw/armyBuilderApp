@@ -5,7 +5,7 @@
 
 <body>
 
-<nav th:replace="/fragments/nav :: nav-front"></nav>
+<nav th:replace="/fragments/nav :: nav-admin"></nav>
 
 <div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></div>
 
@@ -18,27 +18,27 @@
 
         <div class="form-group">
             <label for="name">Name:</label>
-            <input id="name" type="text" th:field="*{name}">
+            <input id="name" type="text" th:field="*{name}" class="form-control">
             <span th:errors="*{name}"></span>
         </div>
         <div class="form-group">
             <label for="baseCost">Points:</label>
-            <input id="baseCost" type="text" th:field="*{baseCost}">
+            <input id="baseCost" type="text" th:field="*{baseCost}" class="form-control">
             <span th:errors="*{baseCost}"></span>
         </div>
         <div class="form-group">
             <label for="additionalModelsCost">Additional model cost:</label>
-            <input id="additionalModelsCost" type="text" th:field="*{additionalModelsCost}">
+            <input id="additionalModelsCost" type="text" th:field="*{additionalModelsCost}" class="form-control">
             <span th:errors="*{additionalModelsCost}"></span>
         </div>
         <div class="form-group">
             <label for="minSizeOfUnit">Min size of unit:</label>
-            <input id="minSizeOfUnit" type="text" th:field="*{minSizeOfUnit}">
+            <input id="minSizeOfUnit" type="text" th:field="*{minSizeOfUnit}" class="form-control">
             <span th:errors="*{minSizeOfUnit}"></span>
         </div>
         <div class="form-group">
             <label for="maxSizeOfUnit">Max size of unit:</label>
-            <input id="maxSizeOfUnit" type="text" th:field="*{maxSizeOfUnit}">
+            <input id="maxSizeOfUnit" type="text" th:field="*{maxSizeOfUnit}" class="form-control">
             <span th:errors="*{maxSizeOfUnit}"></span>
         </div>
         <input type="hidden" th:field="*{id}" th:value="${unit.id}">

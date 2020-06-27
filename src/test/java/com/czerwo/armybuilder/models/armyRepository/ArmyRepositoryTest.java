@@ -26,10 +26,10 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @ActiveProfiles("test")
 @Sql(scripts = "classpath:db/testScripts/test.sql")
-//@TestPropertySource(properties = {
-//        "spring.jpa.hibernate.ddl-auto=create-drop",
-//        "spring.flyway.enabled=false"
-//})
+@TestPropertySource(properties = {
+        "spring.jpa.hibernate.ddl-auto=create-drop",
+        "spring.flyway.enabled=false"
+})
 public class ArmyRepositoryTest {
 
     @Autowired

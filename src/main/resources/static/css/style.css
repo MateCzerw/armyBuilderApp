@@ -16,31 +16,22 @@ span.error {
     margin-bottom: 0;
     outline: 0;
 }
-.image-radio input[type="radio"] {
-    display: none;
-}
-.image-radio-checked {
-    border-color: #4783B0;
-}
-.image-radio .glyphicon {
-    position: absolute;
-    color: #4A79A3;
-    background-color: #fff;
-    padding: 10px;
-    top: 0;
-    right: 0;
-}
-.image-radio-checked .glyphicon {
-    display: block !important;
-}
-
-nav{
-    margin-bottom: 50px;
-}
 
 .tournaments-bar{
     background-color: silver;
     font-size: 48px;
     border: solid 3px black;
     border-radius: 30px;
+}
+
+
+.content{
+    background: white;
+    border-radius: 20px;
+    border: silver solid 5px;
+    min-height: 600px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    margin-top: 100px;
+    margin-bottom: 100px;
 }

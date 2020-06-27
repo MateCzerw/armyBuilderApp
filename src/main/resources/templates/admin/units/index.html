@@ -5,53 +5,69 @@
 
 <body>
 
-<nav th:replace="/fragments/nav :: nav-front"></nav>
+<nav th:replace="/fragments/nav :: nav-admin"></nav>
 <div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></div>
 <div class="container">
 
-    <table class="table">
-        <thead class="thead-dark">
+    <table class="table text-center table-striped table-hover" th:each="unit: ${units}">
+        <thead >
             <tr>
-                <th scope="col">Unit name</th>
-                <th scope="col">Points</th>
-                <th scope="col">Advance Rate</th>
-                <th scope="col">March Rate</th>
-                <th scope="col">Discipline</th>
-                <th scope="col">Health Points</th>
-                <th scope="col">Defensive Skill</th>
-                <th scope="col">Resilience</th>
-                <th scope="col">Armour</td>
-                <th scope="col">Agility</th>
-                <th scope="col">Attack Value</th>
-                <th scope="col">Offensive Skill</th>
-                <th scope="col">Strength</th>
-                <th scope="col">Armour Penetration</th>
+                <th scope="col text-center">Unit name</th>
+                <th scope="col text-center">Points</th>
+                <th scope="col text-center">Advance Rate</th>
+                <th scope="col text-center">March Rate</th>
+                <th scope="col text-center">Discipline</th>
+                <th scope="col text-center">Health Points</th>
+                <th scope="col text-center">Defensive Skill</th>
+
+                <th scope="col text-center">Functions:</th>
             </tr>
         </thead>
-            <tr th:each="unit: ${units}">
-                <td th:text="*{unit.name}"></td>
-                <td th:text="*{unit.baseCost}"></td>
-                <td th:text="*{unit.unitDetails.getAdvanceRate()}"></td>
-                <td th:text="*{unit.unitDetails.getMarchRate()}"></td>
-                <td th:text="*{unit.unitDetails.getDiscipline()}"></td>
-                <td th:text="*{unit.unitDetails.getHealthPoints()}"></td>
-                <td th:text="*{unit.unitDetails.getDefensiveSkill()}"></td>
-                <td th:text="*{unit.unitDetails.getResilience()}"></td>
-                <td th:text="*{unit.unitDetails.getArmour()}"></td>
-                <td th:text="*{unit.unitDetails.getAgility()}"></td>
-                <td th:text="*{unit.unitDetails.getAttackValue()}"></td>
-                <td th:text="*{unit.unitDetails.getOffensiveSkill()}"></td>
-                <td th:text="*{unit.unitDetails.getStrength()}"></td>
-                <td th:text="*{unit.unitDetails.getArmourPenetration()}"></td>
-                <td><a th:href="@{'/admin/units/edit/' + ${unit.id}}"><button type="button" class="btn btn-primary">Edit</button></a></td>
-                <td><a th:href="@{'/admin/armies/' + ${armyId} + '/units/delete/' + ${unit.id}}"><button type="button" class="btn btn-danger">Delete</button></a></td>
-                <td><a th:href="@{'/admin/units/edit-details/' + ${unit.id}}"><button type="button" class="btn btn-info">Edit unit statistics</button></a></td>
-                <td><a th:href="@{'/admin/units/' + ${unit.id} + '/groups'}"><button type="button" class="btn btn-warning">Groups</button></a></td>
+            <tr>
+                <td class="text-center" th:text="*{unit.name}"></td>
+                <td class="text-center" th:text="*{unit.baseCost}"></td>
+                <td  class="text-center" th:text="*{unit.unitDetails.getAdvanceRate()}"></td>
+                <td class="text-center" th:text="*{unit.unitDetails.getMarchRate()}"></td>
+                <td class="text-center" th:text="*{unit.unitDetails.getDiscipline()}"></td>
+                <td class="text-center" th:text="*{unit.unitDetails.getHealthPoints()}"></td>
+                <td class="text-center" th:text="*{unit.unitDetails.getDefensiveSkill()}"></td>
+
+                <div class="row">
+
+
+                <td class="col"><a class="col" th:href="@{'/admin/units/edit/' + ${unit.id}}"><button type="button" class="btn btn-primary">Edit</button></a></td>
+                <td class="col"><a  class="col" th:href="@{'/admin/armies/' + ${armyId} + '/units/delete/' + ${unit.id}}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                <td class="col"><a class="col" th:href="@{'/admin/units/edit-details/' + ${unit.id}}"><button type="button" class="btn btn-info">Edit unit statistics</button></a></td>
+                <td class="col"><a class="col" th:href="@{'/admin/units/' + ${unit.id} + '/groups'}"><button type="button" class="btn btn-warning">Groups</button></a></td>
+                </div>
             </tr>
+
+        <thead class="table text-center table-striped table-hover">
+        <tr>
+            <th scope="col text-center">Resilience</th>
+            <th scope="col text-center">Armour</td>
+            <th scope="col text-center">Agility</th>
+            <th scope="col text-center">Attack Value</th>
+            <th scope="col text-center">Offensive Skill</th>
+            <th scope="col text-center">Strength</th>
+            <th scope="col text-center">Armour Penetration</th>
+
+        </tr>
+
+        </thead>
+        <tr>
+            <td class="text-center" th:text="*{unit.unitDetails.getResilience()}"></td>
+            <td class="text-center" th:text="*{unit.unitDetails.getArmour()}"></td>
+            <td class="text-center" th:text="*{unit.unitDetails.getAgility()}"></td>
+            <td class="text-center" th:text="*{unit.unitDetails.getAttackValue()}"></td>
+            <td class="text-center" th:text="*{unit.unitDetails.getOffensiveSkill()}"></td>
+            <td class="text-center" th:text="*{unit.unitDetails.getStrength()}"></td>
+            <td class="text-center" th:text="*{unit.unitDetails.getArmourPenetration()}"></td>
+        </tr>
 
     </table>
     <a th:href="@{'/admin/armies/' + ${armyId} + '/units/add'}" class="btn btn-primary">Add new unit!</a>
-    <a th:href="@{'/admin/armies/' + ${armyId}}" class="btn btn-primary">Return to armies!</a>
+    <a th:href="@{/admin/armies/}" class="btn btn-primary">Return to armies!</a>
 
 </div>
 <div th:replace="/fragments/footer"></div>

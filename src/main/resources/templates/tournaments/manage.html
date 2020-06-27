@@ -11,7 +11,7 @@
 
     <div class="row justify-content-center tournaments-bar my-6 mx-0" th:text="${tournament.name}"></div>
 
-    <table class="table table-hover">
+    <table class="table table-hover text-center">
         <thead class="thead-dark">
         <tr>
             <th scope="col">Name</th>
@@ -23,7 +23,7 @@
 
             <td class="justify-content-center">
                 <a th:href="@{'/tournaments/' + ${tournament.id} + '/remove/' + ${participant.id}}" class="col">
-                    <button type="button" class="btn btn-danger col">Remove!</button>
+                    <button type="button" class="btn btn-danger">Remove!</button>
                 </a>
             </td>
         </tr>

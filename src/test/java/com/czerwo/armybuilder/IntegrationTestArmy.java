@@ -63,16 +63,8 @@ public class IntegrationTestArmy
                 .andExpect(status().is3xxRedirection());
 
         Optional<Army> armyByName = armyRepository.findByName("Ninjas");
-
-
-
-
-
         String name = armyByName.map(u -> u.getName()).orElseThrow(RuntimeException::new);
-
-
         assertEquals("Ninjas", name);
-
 
     }
 
