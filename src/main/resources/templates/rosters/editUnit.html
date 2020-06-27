@@ -1,11 +1,11 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="/fragments/head"></head>
+<head th:replace="fragments/head"></head>
 
 <body>
 
-<nav th:replace="/fragments/nav :: nav-front"></nav>
+<nav th:replace="fragments/nav :: nav-front"></nav>
 
 <div class="container justify-content-center">
     <form method="post" th:action="@{'/rosters/' + ${rosterId} + '/edit-unit/' + ${orderedUnitId}}">
@@ -33,7 +33,7 @@
 </div>
 
 
-<div th:replace="/fragments/footer"></div>
+<div th:replace="fragments/footer"></div>
 
 
 </body>

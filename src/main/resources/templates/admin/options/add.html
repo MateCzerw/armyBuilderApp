@@ -1,11 +1,11 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="/fragments/head"></head>
+<head th:replace="fragments/head"></head>
 
 <body>
 
-<nav th:replace="/fragments/nav :: nav-admin"></nav>
+<nav th:replace="fragments/nav :: nav-admin"></nav>
 <div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></div>
     <div class="container">
         <form method="post" th:object="${option}" th:action="@{'/admin/group-of-options/' + ${groupId} +'/options/add'}">
@@ -30,7 +30,7 @@
         </form>
     </div>
 
-<div th:replace="/fragments/footer"></div>
+<div th:replace="fragments/footer"></div>
 
 
 <script>

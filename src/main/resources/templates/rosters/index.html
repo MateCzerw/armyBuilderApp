@@ -1,11 +1,11 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="/fragments/head"></head>
+<head th:replace="fragments/head"></head>
 
 <body>
 
-<nav th:replace="/fragments/nav :: nav-front"></nav>
+<nav th:replace="fragments/nav :: nav-front"></nav>
 <div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></div>
 <div class="container">
 
@@ -37,7 +37,7 @@
     </table>
     <a th:href="@{/rosters/add}" class="btn btn-warning col">Add new roster!</a>
 </div>
-<div th:replace="/fragments/footer"></div>
+<div th:replace="fragments/footer"></div>
 
 </body>
 

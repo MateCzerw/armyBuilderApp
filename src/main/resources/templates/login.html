@@ -1,11 +1,11 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="/fragments/head"></head>
+<head th:replace="fragments/head"></head>
 
 <body>
 
-<nav th:replace="/fragments/nav :: nav-front"></nav>
+<nav th:replace="fragments/nav :: nav-front"></nav>
 
 <div class="container">
     <form class="form-signin" method="post" th:action="@{/login}">
@@ -20,8 +20,10 @@
         </p>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     </form>
+</div>
 
-<div th:replace="/fragments/footer"></div>
+
+<footer th:replace="fragments/footer"></footer>
 
 
 </body>

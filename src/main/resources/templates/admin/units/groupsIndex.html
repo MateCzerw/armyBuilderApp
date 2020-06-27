@@ -1,11 +1,11 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="/fragments/head"></head>
+<head th:replace="fragments/head"></head>
 
 <body>
 
-<nav th:replace="/fragments/nav :: nav-admin"></nav>
+<nav th:replace="fragments/nav :: nav-admin"></nav>
 <div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></div>
 <div class="container">
     <table class="table text-center table-striped table-hover">
@@ -29,7 +29,7 @@
     <a th:href="@{'/admin/units/' + ${unitId} + '/groups/add'}" class="btn btn-secondary btn-block">Add existing group!</a>
     <a th:href="@{'/admin/armies/' + ${armyId} + '/units'}" class="btn btn-primary btn-block">Return to units!</a>
 </div>
-<div th:replace="/fragments/footer"></div>
+<div th:replace="fragments/footer"></div>
 
 
 </body>
