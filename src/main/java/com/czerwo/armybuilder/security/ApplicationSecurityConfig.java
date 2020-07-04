@@ -38,6 +38,8 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 //.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
+                .antMatchers("/register").permitAll()
+                .antMatchers("/token**").permitAll()
                 .antMatchers("/admin/**").hasAnyAuthority(ADMIN_PANEL.getPermission())
                 .antMatchers("/roster/**").hasAnyAuthority(USER_ROSTER.getPermission())
                 .anyRequest()

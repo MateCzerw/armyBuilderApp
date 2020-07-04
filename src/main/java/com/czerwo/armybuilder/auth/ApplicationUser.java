@@ -41,6 +41,7 @@ public class ApplicationUser implements UserDetails {
     private boolean isAccountNonLocked;
     private boolean isCredentialsNonExpired;
     private boolean isEnabled;
+    private String email;
 
     public ApplicationUser() {
     }
@@ -136,5 +137,13 @@ public class ApplicationUser implements UserDetails {
 
     public void removeTournament(Tournament tournament) {
         tournaments.remove(tournament);
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

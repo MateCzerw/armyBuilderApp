@@ -8,8 +8,18 @@ create table application_user
     is_enabled                 boolean not null,
     password                   varchar(255),
     username                   varchar(255),
+    email                      varchar(255),
     primary key (id)
 );
+
+create table token
+(
+    id                  integer AUTO_INCREMENT,
+    value               varchar(255),
+    application_user_id integer,
+    primary key (id)
+);
+
 
 create table army
 (
@@ -123,76 +133,81 @@ create table unit_details
 alter table ooption_groups_of_options
     add
         foreign key (groups_of_options_id)
-            references group_of_options(id);
+            references group_of_options (id);
 
 alter table ooption_groups_of_options
     add
         foreign key (options_id)
-            references ooption(id);
+            references ooption (id);
 
 alter table ordered_unit
     add
         foreign key (roster_id)
-            references roster(id);
+            references roster (id);
 
 alter table ordered_unit
     add
         foreign key (unit_id)
-            references unit(id);
+            references unit (id);
 
 alter table roster
     add
         foreign key (application_user_id)
-            references application_user(id);
+            references application_user (id);
 
 alter table roster
     add
         foreign key (army_id)
-            references army(id);
+            references army (id);
 
 alter table tournament
     add
         foreign key (host_id)
-            references application_user(id);
+            references application_user (id);
 
 alter table unit
     add
         foreign key (army_id)
-            references army(id);
+            references army (id);
 
 
 alter table unit
     add
         foreign key (unit_details_id)
-            references unit_details(id);
+            references unit_details (id);
 
 alter table group_of_options_units
     add
         foreign key (groups_of_options_id)
-            references group_of_options(id);
+            references group_of_options (id);
 
 alter table group_of_options_units
     add
         foreign key (units_id)
-            references unit(id);
+            references unit (id);
 
 alter table ordered_unit_choosen_options
     add
         foreign key (ordered_units_id)
-            references ordered_unit(id);
+            references ordered_unit (id);
 
 alter table ordered_unit_choosen_options
     add
         foreign key (choosen_options_id)
-            references ooption(id);
+            references ooption (id);
 
 
 alter table tournament_participants
     add
-        foreign key(participants_id)
-            references application_user(id);
+        foreign key (participants_id)
+            references application_user (id);
 
 alter table tournament_participants
     add
-        foreign key(tournaments_id)
-            references tournament(id);
+        foreign key (tournaments_id)
+            references tournament (id);
+
+alter table token
+    add
+        foreign key (application_user_id)
+            references application_user (id);
